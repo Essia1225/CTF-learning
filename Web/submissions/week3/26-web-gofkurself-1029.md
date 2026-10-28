@@ -53,7 +53,9 @@ Sniper: 单位置单参数爆破
 Battering Ram: 多位置单参数爆破(Payload相同)
 Pitchfork: 成对数据的爆破
 Cluster Bomb: 多字典排列组合
-- 命中那一行怎么认（Length / Status / 响应时间）：____
+- 命中那一行怎么认（Length / Status / 响应时间）：先按 Length 排序，成功页和失败页体积不一样，
+  那个孤零零的异类就是；Status 变成 302/200 而其他行都是 200 但内容不同时以 Length 为准；
+  响应时间只能当辅助，密码对时后端多查一次库会明显慢，但网络抖动也会慢，不能单独下结论
 
 
 ### 4.5 hydra 爆破
@@ -66,9 +68,9 @@ hydra -l ____ -P ____ ____ http-post-form "____"
 ```
 
 - 各参数含义：
--l:用户名
--p:字典文件的路径
-http-post-from:请求路径:POST参数:失败标志
+-l:单个用户名（-L 是用户名字典）
+-P:密码字典文件的路径（-p 是单个密码，不是字典）
+http-post-form:请求路径:POST参数:失败特征，用来判断这一枪是不是空了
 - 输出里哪一行代表成功：
 [80],host:,login,password等字段
 

@@ -53,7 +53,8 @@ Sniper: 单位置单参数爆破
 Battering Ram: 多位置单参数爆破(Payload相同)
 Pitchfork: 成对数据的爆破
 Cluster Bomb: 多字典排列组合
-- 命中那一行怎么认（Length / Status / 响应时间）：____
+- 命中那一行怎么认（Length / Status / 响应时间）：
+明显的与其他响应行长度不同 时间不同
 
 
 ### 4.5 hydra 爆破
@@ -67,7 +68,8 @@ hydra -l ____ -P ____ ____ http-post-form "____"
 
 - 各参数含义：
 -l:用户名
--p:字典文件的路径
+-P:字典文件的路径
+-p:单个密码
 http-post-from:请求路径:POST参数:失败标志
 - 输出里哪一行代表成功：
 [80],host:,login,password等字段
